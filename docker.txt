@@ -1,0 +1,4 @@
+docker build -f Dockerfile -t javaapi:1.0.0 .
+docker run -p 8080:8080 javaapi:1.0.0
+docker run -d -p 2717:27017 -v $PWD/mongodb:/data/db --name mongodb mongo:latest
+docker run -d -p 8080:8080 --name javaapi --link mongodb:mongo javaapi:1.0.0
